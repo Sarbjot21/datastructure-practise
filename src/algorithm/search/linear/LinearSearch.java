@@ -10,7 +10,7 @@ Input : arr[] = {10, 20, 80, 30, 60, 50,110, 100, 130, 170}
 Output : -1
 Element x is not present in arr[].*/
 
-package algorithm.search;
+package algorithm.search.linear;
 
 
 public class LinearSearch {
@@ -33,7 +33,7 @@ public class LinearSearch {
 		int i=0;
 		while(i<arr.length) {
 		    if(arr[i]==x)
-			return (i+1);
+			return (i);
 		    i++;
 		}
 		return -1;
