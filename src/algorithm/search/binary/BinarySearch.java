@@ -33,9 +33,9 @@ public class BinarySearch
         		if(arr[mid]==value)
         		    return mid;
         		else if(arr[mid]>value)
-        		    return binarySearch(arr, start, mid, value);
+        		    return binarySearch(arr, start, mid-1, value);
         		else
-        		    return binarySearch(arr, mid, end, value);
+        		    return binarySearch(arr, mid+1, end, value);
 		}
 		return -1;
 	    } 
