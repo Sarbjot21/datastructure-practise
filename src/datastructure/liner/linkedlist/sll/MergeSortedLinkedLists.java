@@ -1,6 +1,6 @@
-package datastructure.liner.linkedlist;
+package datastructure.liner.linkedlist.sll;
 
-import datastructure.liner.linkedlist.LinkedList.Node;
+import datastructure.liner.linkedlist.sll.LinkedList.Node;
 
 public class MergeSortedLinkedLists {
 	
