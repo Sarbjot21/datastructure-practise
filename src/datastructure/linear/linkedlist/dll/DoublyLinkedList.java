@@ -1,4 +1,4 @@
-package datastructure.liner.linkedlist.dll;
+package datastructure.linear.linkedlist.dll;
 
 public class DoublyLinkedList {
 	DoublyLinkedListNode head;

@@ -1,4 +1,4 @@
-package datastructure.liner.array;
+package datastructure.linear.array;
 
 /*
  * INTRODUCTION:

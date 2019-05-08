@@ -1,6 +1,6 @@
-package datastructure.liner.linkedlist.sll;
+package datastructure.linear.linkedlist.sll;
 
-import datastructure.liner.linkedlist.sll.LinkedList.Node;
+import datastructure.linear.linkedlist.sll.LinkedList.Node;
 
 public class PositionFromTail {
 

@@ -1,4 +1,4 @@
-package datastructure.liner.array;
+package datastructure.linear.array;
 /*
  * 
  * Qs : Longest Span with same Sum in two Binary arrays | GeeksforGeeks

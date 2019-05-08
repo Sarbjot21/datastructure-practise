@@ -1,4 +1,4 @@
-package datastructure.liner.linkedlist.sll;
+package datastructure.linear.linkedlist.sll;
 
 import java.util.Collection;
 import java.util.Iterator;

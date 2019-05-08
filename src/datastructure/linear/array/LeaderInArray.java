@@ -1,4 +1,4 @@
-package datastructure.liner.array;
+package datastructure.linear.array;
 /*
  * 
  * Leader : A leader element is an element which is greater than all the elements at its right.
