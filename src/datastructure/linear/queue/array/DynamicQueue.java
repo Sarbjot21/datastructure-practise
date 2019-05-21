@@ -1,4 +1,4 @@
-package datastructure.linear.queue;
+package datastructure.linear.queue.array;
 
 public class DynamicQueue<T> {
 	private int CAPACITY;
