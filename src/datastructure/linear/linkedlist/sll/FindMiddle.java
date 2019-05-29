@@ -23,7 +23,7 @@ public class FindMiddle {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LinkedList<Integer> list = new LinkedList();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.addElement(3);
 		list.addElement(4);
 		list.addElement(5);

@@ -1,5 +1,15 @@
 package datastructure.linear.linkedlist.dll;
-
+class DoublyLinkedListNode{
+	int data;
+	DoublyLinkedListNode next;
+	DoublyLinkedListNode prev;
+	DoublyLinkedListNode(int data){
+		this.data = data;
+		this.next = null;
+		this.prev = null;
+		
+	}
+}
 public class DoublyLinkedList {
 	DoublyLinkedListNode head;
 	DoublyLinkedListNode tail;
@@ -7,17 +17,7 @@ public class DoublyLinkedList {
 		this.head = null;
 		this.tail = null;
 	}
-	class DoublyLinkedListNode{
-		int data;
-		DoublyLinkedListNode next;
-		DoublyLinkedListNode prev;
-		DoublyLinkedListNode(int data){
-			this.data = data;
-			this.next = null;
-			this.prev = null;
-			
-		}
-	}
+	
 	
 	public void addFirst(int data) {
 		DoublyLinkedListNode node = new DoublyLinkedListNode(data);

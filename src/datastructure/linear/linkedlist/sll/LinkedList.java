@@ -1,21 +1,18 @@
 package datastructure.linear.linkedlist.sll;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class LinkedList<T> {
 	Node head,tail;
 	int size;
-	LinkedList(){
+	public LinkedList(){
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
 	}
-	class Node {
-		private int data;
-		private Node next;
+	
+	public class Node {
+		int data;
+		Node next;
 		Node(int data){
 			this.setData(data);
 		}
@@ -33,6 +30,25 @@ public class LinkedList<T> {
 		}
 	}
 	
+	public Node getHead()
+	    {
+		return head;
+	    }
+
+	public void setHead(Node head)
+	    {
+		this.head = head;
+	    }
+
+	public Node getTail()
+	    {
+		return tail;
+	    }
+
+	public void setTail(Node tail)
+	    {
+		this.tail = tail;
+	    }
 	public void addElement(int data) {
 		Node node = new Node(data);
 		if(this.size == 0)
