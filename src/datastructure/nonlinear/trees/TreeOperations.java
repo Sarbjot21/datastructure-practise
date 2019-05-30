@@ -49,7 +49,7 @@ public class TreeOperations
 	*/
 	public static int minDepth(BinaryTreeNode root) {
 	    if(root==null || (root.left==null && root.right==null))
-		return 1;
+		return 0;
 	    int left = 0,right = 0;
 	    if(root.left !=null) {
 		left = minDepth(root.left);
@@ -58,10 +58,10 @@ public class TreeOperations
 		right = minDepth(root.right);
 	    }
 	    
-	    if(left>0 && right>0) {
-		return 1+ left<right?left:right;
-	    }
-	    return 1+(left==0?right:left);
+	    //if(left>0 && right>0) {
+	return 1+(left<right?left:right);
+	    //}
+	   // return 1+(left==0?right:left);
 	}
 	
 	/*Full node is a node which has both right and left child nodes.
@@ -156,9 +156,16 @@ public class TreeOperations
 		tree.root=tree.insertElement(tree.root, 56);
 		tree.root=tree.insertElement(tree.root, 5);
 		tree.root=tree.insertElement(tree.root, 7);
+		tree.inOrderTraversal(tree.root);
+		//ystem.out.println(tree.isBST(tree.root,-1 ,Integer.MAX_VALUE));
+		
+		tree.root=tree.deleteNode(tree.root, 40);
+		tree.inOrderTraversal(tree.root);
+		
 		System.out.println("Number of Leaves in the tree is "+numberOfLeaves(tree.root));
 		System.out.println("Minimum Depth of tree is :"+minDepth(tree.root));
 		System.out.println("Number of full nodes in the tree is "+numberOfFullNodes(tree.root));
+		
 		printAncestors(tree.root, 5);
 	    }
 

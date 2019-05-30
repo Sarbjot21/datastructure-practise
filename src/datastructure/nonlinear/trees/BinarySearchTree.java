@@ -3,7 +3,7 @@ package datastructure.nonlinear.trees;
 import java.util.Vector;
 
 import datastructure.linear.linkedlist.sll.LinkedList;
-import datastructure.linear.linkedlist.sll.LinkedList.Node;
+
 
 public class BinarySearchTree<T> {
     BinarySearchTreeNode root;
@@ -23,14 +23,33 @@ public class BinarySearchTree<T> {
     public BinarySearchTreeNode findNode(BinarySearchTreeNode root,Integer data) {
 	if(root == null)
 	    return null;
-	if(root.data<=data)
+	if(root.data<data)
 	    return findNode(root.right,data);
 	else if(root.data >data)
 	    return findNode(root.left,data);
 	else
-	    return null;
+	    return root;
     }
     
+    public BinarySearchTreeNode deleteNode(BinarySearchTreeNode root,Integer data) {
+	if(root == null)
+	    return null;
+	if(data>root.data)
+	    root.right = deleteNode(root.right,data);
+	else if(data<root.data)
+	    root.left =  deleteNode(root.left,data);
+	else {
+	    if(root.left==null)
+		return root.right;
+	    else if(root.right == null)
+		return root.left;
+	    else {
+		root.data = this.findMin(root.right);
+		root.right = deleteNode(root.right, data);
+	    }
+	}
+	return root;	
+    }
     public Integer findMin(BinarySearchTreeNode root) {
 	if(root == null)
 	    return null;
@@ -65,6 +84,8 @@ public class BinarySearchTree<T> {
 	    return root;
     }
     
+    /* Time Complexity : O(nlogn)
+    */
     public static BinarySearchTreeNode construct(Vector<Integer> list, int start, int end)
 	{
 	    // TODO Auto-generated method stub
@@ -77,6 +98,31 @@ public class BinarySearchTree<T> {
 	    
 	   return root;
 	}
+    
+    
+    /*Time Complexity : O(n)
+     * 
+    */
+    public static BinarySearchTreeNode constructTree(LinkedList<Integer>.Node head, int start, int end)
+	{
+	    // TODO Auto-generated method stub
+	    if(start>end)
+		return null;
+	    int mid = start+(end-start)/2;
+	    BinarySearchTreeNode left= constructTree(head, start, mid-1);
+	    BinarySearchTreeNode root = new BinarySearchTreeNode(head.getData());
+	    root.left = left;
+	    if(head.getNext()!=null) {
+		head.setData(head.getNext().getData());
+		head.setNext(head.getNext().getNext());
+	    }
+	    root.right = constructTree(head, mid+1, end);
+	    
+	   
+	   return root;
+	}
+    
+    
 }
 
 class BinarySearchTreeNode
