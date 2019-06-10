@@ -6,7 +6,5 @@ package datastructure.linear.array;
  * Status : Not Completed
 */
 public class MajorityElement {
-	
-	
 
 }

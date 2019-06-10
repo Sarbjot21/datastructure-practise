@@ -50,6 +50,18 @@ public class BinarySearchTree<T> {
 	}
 	return root;	
     }
+    
+    public BinarySearchTreeNode kthSmallest(BinarySearchTreeNode root,int kth,int count) {
+	if(root == null)
+	    return null;
+	BinarySearchTreeNode left = kthSmallest(root.left, kth,count);
+	if(left != null)
+	    return left;
+	if(++count == kth)
+	    return root;
+	return kthSmallest(root.right, kth, count);
+	
+    }
     public Integer findMin(BinarySearchTreeNode root) {
 	if(root == null)
 	    return null;

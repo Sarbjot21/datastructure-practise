@@ -11,42 +11,36 @@
  */
 package datastructure.linear.array;
 
-public class CountRotation
-    {
-	public static void main (String[] args)  
-	    { 
-	        int arr[] = {15, 18, 2, 3, 6, 12}; 
-	        int n = arr.length; 
-	          
-	        System.out.println(countRotations(arr, 0, n-1)); 
-	    }
+public class CountRotation {
+	public static void main(String[] args) {
+		int arr[] = { 15, 18, 2, 3, 6, 12 };
+		int n = arr.length;
 
-	private static int countRotations(int[] arr, int start, int last)
-	    {
-		// TODO Auto-generated method stub
-		        // element 
-		        int min = arr[0], min_index = -1;
-		        int length=arr.length;
-		        for (int i = 0; i < length; i++) 
-		        { 
-		            if (min > arr[i]) 
-		            { 
-		                min = arr[i]; 
-		                min_index = i; 
-		            } 
-		        }  
-		        return min_index; 
-		     
-	    } 
-	private int countRotationUsingBinarySearch(int[] arr, int start, int last) {
-	    if(start>last) 
-		return -1;
-	    else {
-		int mid=start+(last-start)/2;
-	    }
-	    
-	    
-	    
-	    return 0;
+		System.out.println(countRotations(arr, 0, n - 1));
 	}
-    }
+
+	private static int countRotations(int[] arr, int start, int last) {
+		// TODO Auto-generated method stub
+		// element
+		int min = arr[0], min_index = -1;
+		int length = arr.length;
+		for (int i = 0; i < length; i++) {
+			if (min > arr[i]) {
+				min = arr[i];
+				min_index = i;
+			}
+		}
+		return min_index;
+
+	}
+
+	private int countRotationUsingBinarySearch(int[] arr, int start, int last) {
+		if (start > last)
+			return -1;
+		else {
+			int mid = start + (last - start) / 2;
+		}
+
+		return 0;
+	}
+}

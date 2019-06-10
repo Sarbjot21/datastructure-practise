@@ -12,31 +12,28 @@ Element x is not present in arr[].*/
 
 package algorithm.search.linear;
 
-
 public class LinearSearch {
 
-	public static void main(String args[]) 
-	{ 
-	    int arr[] = { 2, 3, 4, 10, 40 };  
-	    int x = 10; 
-	      
-	    int result = search(arr, x); 
-	    if(result == -1) 
-	        System.out.print("Element is not present in array"); 
-	    else
-	        System.out.print("Element is present at index " + result); 
+	public static void main(String args[]) {
+		int arr[] = { 2, 3, 4, 10, 40 };
+		int x = 10;
+
+		int result = search(arr, x);
+		if (result == -1)
+			System.out.print("Element is not present in array");
+		else
+			System.out.print("Element is present at index " + result);
 	}
 
-	private static int search(int[] arr, int x)
-	    {
+	private static int search(int[] arr, int x) {
 		// TODO Auto-generated method stub
-		int i=0;
-		while(i<arr.length) {
-		    if(arr[i]==x)
-			return (i);
-		    i++;
+		int i = 0;
+		while (i < arr.length) {
+			if (arr[i] == x)
+				return (i);
+			i++;
 		}
 		return -1;
-	    } 
+	}
 
 }

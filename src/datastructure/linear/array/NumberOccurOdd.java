@@ -13,18 +13,18 @@ package datastructure.linear.array;
 */
 public class NumberOccurOdd {
 
-	
-	public int getOddOccurence(int[] arr){
-		int res=0;
-		for (int i: arr) {
-			res^=i;
+	public int getOddOccurence(int[] arr) {
+		int res = 0;
+		for (int i : arr) {
+			res ^= i;
 		}
 		return res;
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		NumberOccurOdd odd=new NumberOccurOdd();
-		System.out.println(odd.getOddOccurence(new int[]{3,6,5,5,6,2,3,3,2,3,10,1,1}));
+		NumberOccurOdd odd = new NumberOccurOdd();
+		System.out.println(odd.getOddOccurence(new int[] { 3, 6, 5, 5, 6, 2, 3, 3, 2, 3, 10, 1, 1 }));
 	}
 
 }

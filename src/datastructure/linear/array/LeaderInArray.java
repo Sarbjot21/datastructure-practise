@@ -15,21 +15,21 @@ package datastructure.linear.array;
 
 public class LeaderInArray {
 	public void findLeaderTricky(int arr[]) {
-		int end = arr.length-1;
+		int end = arr.length - 1;
 		int leader = arr[end];
-		System.out.print(arr[end] +" ");
-		for(int i=end-1;i>-1;i--) {
-			if(arr[i]>leader)
-			{
-				System.out.print(arr[i]+ " ");
+		System.out.print(arr[end] + " ");
+		for (int i = end - 1; i > -1; i--) {
+			if (arr[i] > leader) {
+				System.out.print(arr[i] + " ");
 				leader = arr[i];
 			}
 		}
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LeaderInArray letsFind = new LeaderInArray();
-		letsFind.findLeaderTricky(new int[]{30,20,5,4,6,7,2});
+		letsFind.findLeaderTricky(new int[] { 30, 20, 5, 4, 6, 7, 2 });
 	}
 
 }
