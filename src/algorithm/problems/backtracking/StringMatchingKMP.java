@@ -6,8 +6,8 @@ public class StringMatchingKMP {
 		// TODO Auto-generated method stub
 		String input = "aaaaaad";
 		String pattern="aad";
-		//System.out.println(findMatch(input,pattern));	
-		}
+		System.out.println(findMatch(input,pattern));	
+	}
 
 	private static boolean findMatch(String input, String pattern) {
 		// TODO Auto-generated method stub

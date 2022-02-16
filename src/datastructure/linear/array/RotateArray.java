@@ -25,9 +25,7 @@ public class RotateArray {
 
 	private int[] leftRotate(int[] arr, int times, int n) {
 		// TODO Auto-generated method stub
-		int temp[] = new int[times];
 		int rotate[] = new int[n];
-		int length = rotate.length;
 		int tempo = 0;
 		for (int st = 0; st < n; st++) {
 			if (st < n - times) {

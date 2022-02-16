@@ -34,13 +34,10 @@ public class CountRotation {
 
 	}
 
-	private int countRotationUsingBinarySearch(int[] arr, int start, int last) {
-		if (start > last)
-			return -1;
-		else {
-			int mid = start + (last - start) / 2;
-		}
-
-		return 0;
-	}
+	/*
+	 * private int countRotationUsingBinarySearch(int[] arr, int start, int last) {
+	 * if (start > last) return -1; else { int mid = start + (last - start) / 2; }
+	 * 
+	 * return 0; }
+	 */
 }

@@ -9,9 +9,9 @@ public class EqualStackInJava {
 	 * Complete the equalStacks function below.
 	 */
 	static int equalStacks(int[] h1, int[] h2, int[] h3) throws Exception {
-		ArrayStack<Integer> s1 = new ArrayStack(h1.length);
-		ArrayStack<Integer> s2 = new ArrayStack(h2.length);
-		ArrayStack<Integer> s3 = new ArrayStack(h3.length);
+		ArrayStack<Integer> s1 = new ArrayStack<Integer>(h1.length);
+		ArrayStack<Integer> s2 = new ArrayStack<Integer>(h2.length);
+		ArrayStack<Integer> s3 = new ArrayStack<Integer>(h3.length);
 		int sum1 = 0, sum2 = 0, sum3 = 0;
 		for (int i = h1.length - 1; i >= 0; i--) {
 			s1.push(h1[i]);
