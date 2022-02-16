@@ -4,6 +4,7 @@ import java.util.*;
 
 public class IsArmstrongNumber {
 	public static void main(String[] args) {
+		
 		// YOUR CODE GOES HERE
 		// Please take input and print output to standard input/output (stdin/stdout)
 		// DO NOT USE ARGUMENTS FOR INPUTS
