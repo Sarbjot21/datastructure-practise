@@ -1,1 +1,5 @@
 /bin/
+/out/
+/docs/
+data-structures.iml
+/.idea/
