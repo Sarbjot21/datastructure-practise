@@ -1,0 +1,36 @@
+
+public int isMatch(final String A, final String B) {
+        char[] inputString = A.toCharArray();
+        char[] regularExpr = B.toCharArray();
+        if(inputString.length == 0 && regularExpr.length == 0)
+            return 1;
+        if(inputString.length == 0 && regularExpr.length == 1 && regularExpr[0] == '*')
+            return 1;
+
+        int N = inputString.length;
+        int M = regularExpr.length;
+
+        boolean[][] dp = new boolean[N][M];
+        for(int i = 0;i<N;i++){
+            for(int j = 0;j<M;j++){
+                if(inputString[i] == regularExpr[j] || regularExpr[j] == '?'){
+                    if( i > 0 && j > 0)   
+                        dp[i][j] = dp[i-1][j-1];
+                    else
+                        dp[i][j] = true;
+                }else if(regularExpr[j] == '*')
+                {
+                    if(i == 0 && j == 0)
+                        dp[i][j] = true;
+                    else if(i > 0 && j > 0)
+                        dp[i][j] = dp[i][j-1] || dp[i-1][j];
+                    else if( i > 0)
+                        dp[i][j] = dp[i-1][j];
+                    else   
+                        dp[i][j] = dp[i][j-1];
+                }                  
+            }
+        }
+        return (dp[N-1][M-1]?1:0);
+
+}
