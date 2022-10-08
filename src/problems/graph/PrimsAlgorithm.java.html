@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#008000; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#008000; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#0000c0; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#990000; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#c00000; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#005500; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#008000; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#008000; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#008000; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java2">/*<br />
+Given a graph with A nodes and C weighted edges. Cost of constructing the graph is the sum of weights of all the edges in the graph.<br />
+<br />
+Find the minimum cost of constructing the graph by selecting some given edges such that we can reach every other node from the 1st node.<br />
+<br />
+NOTE: Return the answer modulo 109+7 as the answer can be large.<br />
+<br />
+Problem Constraints<br />
+1 &lt;= A &lt;= 100000<br />
+0 &lt;= C &lt;= 100000<br />
+1 &lt;= B[i][0], B[i][1] &lt;= N<br />
+1 &lt;= B[i][2] &lt;= 109<br />
+<br />
+Example Input<br />
+Input 1:<br />
+<br />
+A = 3<br />
+B = [&#xA0;&#xA0; [1, 2, 14]<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [2, 3, 7]<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [3, 1, 2]&#xA0;&#xA0; ]<br />
+Input 2:<br />
+<br />
+A = 3<br />
+B = [&#xA0;&#xA0; [1, 2, 20]<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [2, 3, 17]&#xA0; ]<br />
+<br />
+<br />
+Example Output<br />
+Output 1:<br />
+9<br />
+<br />
+Output 2:<br />
+37<br />
+<br />
+<br />
+Example Explanation<br />
+Explanation 1:<br />
+<br />
+We can take only two edges (2 -&gt; 3 and 3 -&gt; 1) to construct the graph. <br />
+we can reach the 1st node from 2nd and 3rd node using only these two edges.<br />
+So, the total cost of costruction is 9.<br />
+Explanation 2:<br />
+<br />
+We have to take both the given edges so that we can reach the 1st node from 2nd and 3rd node.<br />
+<br />
+*/<br />
+</span><span class="java4">public class </span><span class="java10">Solution </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">class </span><span class="java10">Pair</span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">vertice;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">distance;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Pair</span><span class="java8">(</span><span class="java9">int </span><span class="java10">vertice,int distance</span><span class="java8">){<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.vertice = vertice;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">this</span><span class="java10">.distance = distance;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java9">int </span><span class="java10">solve</span><span class="java8">(</span><span class="java9">int </span><span class="java10">A, </span><span class="java9">int</span><span class="java8">[][] </span><span class="java10">B</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">//A vertices<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">visited</span><span class="java8">[] </span><span class="java10">= </span><span class="java4">new </span><span class="java9">int</span><span class="java8">[</span><span class="java10">A+</span><span class="java7">1</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">mod = </span><span class="java7">1000000000 </span><span class="java10">+ </span><span class="java7">7</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">//A+1<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ArrayList&lt;Pair&gt;</span><span class="java8">[] </span><span class="java10">adjacency = adjacency</span><span class="java8">(</span><span class="java10">A,B</span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">noOfVerticesVisited = </span><span class="java7">0</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; PriorityQueue&lt;Pair&gt; minHeap = </span><span class="java4">new </span><span class="java10">PriorityQueue&lt;&gt;</span><span class="java8">((</span><span class="java10">a,b</span><span class="java8">)</span><span class="java10">-&gt; a.distance-b.distance</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; minHeap.add</span><span class="java8">(</span><span class="java4">new </span><span class="java10">Pair</span><span class="java8">(</span><span class="java7">1</span><span class="java10">,</span><span class="java7">0</span><span class="java8">))</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">long </span><span class="java10">ans = </span><span class="java7">0</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">while</span><span class="java8">(</span><span class="java10">!minHeap.isEmpty</span><span class="java8">()) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Pair currentNode = minHeap.poll</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">vertice = currentNode.vertice;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">visited</span><span class="java8">[</span><span class="java10">vertice</span><span class="java8">] </span><span class="java10">== </span><span class="java7">0</span><span class="java8">){<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">visited</span><span class="java8">[</span><span class="java10">vertice</span><span class="java8">] </span><span class="java10">= </span><span class="java7">1</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; noOfVerticesVisited++;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ans += currentNode.distance;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ArrayList&lt;Pair&gt; neighbours = adjacency</span><span class="java8">[</span><span class="java10">vertice</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">neighbours == </span><span class="java4">null</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">continue</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">for</span><span class="java8">(</span><span class="java9">int </span><span class="java10">i = </span><span class="java7">0</span><span class="java10">;i&lt;neighbours.size</span><span class="java8">()</span><span class="java10">;i++</span><span class="java8">){<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Pair neighbour = neighbours.get</span><span class="java8">(</span><span class="java10">i</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">visited</span><span class="java8">[</span><span class="java10">neighbour.vertice</span><span class="java8">] </span><span class="java10">== </span><span class="java7">0</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">minHeap.add</span><span class="java8">(</span><span class="java10">neighbour</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">noOfVerticesVisited == A</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">break</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java8">(</span><span class="java9">int</span><span class="java8">) ((</span><span class="java10">ans+mod</span><span class="java8">)</span><span class="java10">%mod</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">ArrayList&lt;Pair&gt;</span><span class="java8">[] </span><span class="java10">adjacency</span><span class="java8">(</span><span class="java9">int </span><span class="java10">vertices, </span><span class="java9">int</span><span class="java8">[][] </span><span class="java10">relationsWithWeights</span><span class="java8">){<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ArrayList&lt;Pair&gt;</span><span class="java8">[] </span><span class="java10">adjacencyList = </span><span class="java4">new </span><span class="java10">ArrayList</span><span class="java8">[</span><span class="java10">vertices+</span><span class="java7">1</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">for</span><span class="java8">(</span><span class="java9">int </span><span class="java10">i = </span><span class="java7">0</span><span class="java10">;i&lt;relationsWithWeights.length;i++</span><span class="java8">){<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">from = relationsWithWeights</span><span class="java8">[</span><span class="java10">i</span><span class="java8">][</span><span class="java7">0</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">to = relationsWithWeights</span><span class="java8">[</span><span class="java10">i</span><span class="java8">][</span><span class="java7">1</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">weight = relationsWithWeights</span><span class="java8">[</span><span class="java10">i</span><span class="java8">][</span><span class="java7">2</span><span class="java8">]</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">adjacencyList</span><span class="java8">[</span><span class="java10">from</span><span class="java8">] </span><span class="java10">== </span><span class="java4">null</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">adjacencyList</span><span class="java8">[</span><span class="java10">from</span><span class="java8">] </span><span class="java10">= </span><span class="java4">new </span><span class="java10">ArrayList&lt;Pair&gt;</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">(</span><span class="java10">adjacencyList</span><span class="java8">[</span><span class="java10">to</span><span class="java8">] </span><span class="java10">== </span><span class="java4">null</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">adjacencyList</span><span class="java8">[</span><span class="java10">to</span><span class="java8">] </span><span class="java10">= </span><span class="java4">new </span><span class="java10">ArrayList&lt;Pair&gt;</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Pair fromTo = </span><span class="java4">new </span><span class="java10">Pair</span><span class="java8">(</span><span class="java10">to,weight</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Pair toFrom = </span><span class="java4">new </span><span class="java10">Pair</span><span class="java8">(</span><span class="java10">from,weight</span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">//Add elements with weight on both the vertices in adjacency list. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">adjacencyList</span><span class="java8">[</span><span class="java10">from</span><span class="java8">]</span><span class="java10">.add</span><span class="java8">(</span><span class="java10">fromTo</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; adjacencyList</span><span class="java8">[</span><span class="java10">to</span><span class="java8">]</span><span class="java10">.add</span><span class="java8">(</span><span class="java10">toFrom</span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">adjacencyList;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}</span></code></div></body>
+</html>
